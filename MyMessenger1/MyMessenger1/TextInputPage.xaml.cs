@@ -50,5 +50,24 @@ namespace MyMessenger1
 
             Navigation.PopAsync();
         }
+
+        async private void ButtonDelete_Clicked(object sender, EventArgs e)
+        {
+            //Die Liste leeren
+            //MainPage.MessageList.Clear();
+
+            //ODER
+
+            MainPage.MessageList = new List<Message>();
+
+            //Den internen Speicher der App löschen, die Nachrichten über den Key da es sich um ein Dictionary handelt
+            Application.Current.Properties.Remove(App.MessageListKey);
+
+            //Speichert vom Arbeitsspeicher in den richtigen Speicher
+            await Application.Current.SavePropertiesAsync();
+
+            //Zurück zur Startseite, die aktuelle Seite wird vom Stack genommen
+            await Navigation.PopAsync();
+        }
     }
 }

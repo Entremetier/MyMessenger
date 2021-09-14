@@ -34,6 +34,13 @@
                     Clicked="ButtonSend_Clicked"
                     Text=">" />
             </StackLayout>
+
+            <Button
+                    x:Name="ButtonDelete"
+                    Clicked="ButtonDelete_Clicked"
+                    Text="Chat löschen"
+                    BackgroundColor="Red"/>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

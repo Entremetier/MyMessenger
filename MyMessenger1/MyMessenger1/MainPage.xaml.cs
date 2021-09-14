@@ -47,7 +47,20 @@ namespace MyMessenger1
                 string jsonString = Application.Current.Properties[App.MessageListKey] as string;
 
                 //Konvertieren des deserialisierten jsonString als List<Message>
-                MainPage.MessageList = JsonConvert.DeserializeObject<List<Message>>(jsonString);
+                MessageList = JsonConvert.DeserializeObject<List<Message>>(jsonString);
+
+                if (MessageList.Count() > 1)
+                {
+                    //Die user aus der Liste holen
+                    string userA = MessageList[0].Sender;
+                    string userB = MessageList[1].Sender;
+
+                    //Die beiden User direkt zu beginn in die Entrys schreiben
+                    EntryUserA.Text = userA;
+                    EntryUserB.Text = userB;
+
+                    userCount = MessageList.Count() % 2;
+                }
             }
         }
 
@@ -57,7 +70,7 @@ namespace MyMessenger1
             users[0] = EntryUserA.Text;
             users[1] = EntryUserB.Text;
 
-            //Message an Page übergeben
+            //Message an Page übergeben, damit beim Teilnehmer 1 der Name vom Teilnehmer 2 angezeigt wird
             Message tmpMessage = new Message() { Text = "", Sender = users[1] };
             Navigation.PushAsync(new TextInputPage(tmpMessage, users[0]));
         }
