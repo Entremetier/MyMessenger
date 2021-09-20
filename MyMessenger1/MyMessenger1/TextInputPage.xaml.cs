@@ -18,9 +18,10 @@ namespace MyMessenger1
         public TextInputPage(Message msg, string user)
         {
             InitializeComponent();
+            ListViewMessages.ItemsSource = MainPage.MessageList;
 
             LabelUsername.Text = "Chat mit " + msg.Sender;
-            LabelMessage.Text = msg.Text;
+            //LabelMessage.Text = msg.Text;
             this.user = user;
         }
 

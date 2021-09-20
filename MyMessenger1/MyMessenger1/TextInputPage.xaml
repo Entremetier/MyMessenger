@@ -12,19 +12,23 @@
                 Text=""
                 FontSize="Title" />
 
-            <!--<ListView ItemsSource="">
+            <ListView x:Name="ListViewMessages">
                 <ListView.ItemTemplate>
-                    <DataTemplate></DataTemplate>
+                    <DataTemplate>
+                        <TextCell 
+                            Text="{Binding Sender}" 
+                            Detail="{Binding Text}" />
+                    </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>-->
+            </ListView>
             
             
-            <Label
+            <!--<Label
                 x:Name="LabelMessage"
                 Text=""
                 FontSize="Medium"
                 HorizontalOptions="StartAndExpand"
-                HorizontalTextAlignment="Start"/>
+                HorizontalTextAlignment="Start"/>-->
             <StackLayout Orientation="Horizontal">
                 <Editor
                     x:Name="EditorNewMessage"
